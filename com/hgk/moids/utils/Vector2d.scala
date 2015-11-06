@@ -44,8 +44,20 @@ class Vector2d (val x: Double, val y: Double) {
     def ==(v: Vector2d): Boolean =
         x == v.x && y == v.y
 
+    /* Calculates the dot product of the two vectors */
+    def *(v: Vector2d): Double =
+        x * v.x + y * v.y
+
     //def copy: Vector2d =
     //    new Vector2d(x, y)
+
+    def lineDistance(p1: Vector2d, p2: Vector2d): (Double, Vector2d) = {
+        val lineVector = p2 - p1
+        val adaptedVector = this - p1
+        val projectedVector = (lineVector unit()) * ((lineVector * adaptedVector) / (lineVector %))
+        val distanceVector = projectedVector - adaptedVector
+        (distanceVector %, distanceVector unit())
+    }
 
 
     override def toString: String = "{ " + x + ", " + y + " }"

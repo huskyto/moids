@@ -2,7 +2,6 @@ package com.hgk.moids
 
 import com.hgk.moids.entities.{Carnivore, Herbivore}
 import com.hgk.moids.utils.Vector2d
-import com.hgk.moids.entities.Carnivore
 
 import swing.{ MainFrame, SimpleSwingApplication }
 

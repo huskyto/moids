@@ -28,6 +28,13 @@ class Herbivore(override val position: Vector2d) extends Animal (position) {
             hasStimuli = true
         }
 
+        val (limitDistance, limitAvoid) = closestLimit()
+
+        if (limitDistance < limitAvoidanceThreshold) {
+            acc = acc - limitAvoid.modDir(limitAvoidance)
+            hasStimuli = true
+        }
+
         if(!hasStimuli) {
             acc = -(vel * naturalCalm)
             if ((acc %) < calmThreshold) {

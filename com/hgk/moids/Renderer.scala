@@ -5,18 +5,16 @@ import java.awt.{Dimension, Graphics2D, Color}
 
 class Renderer() extends Panel {
 
-    val xcont = Screen.screenWidth
-    val ycont = Screen.screenHeight
     val rad = 15
     def carnivoreData = Grid.carnivoreList
     def herbivoreData = Grid.herbivoreList
 
-    preferredSize = new Dimension(xcont, ycont)
+    preferredSize = new Dimension(Screen.screenWidth, Screen.screenHeight)
 
     override def paintComponent(g: Graphics2D) {
         
-        val dx = g.getClipBounds.width.toFloat / xcont
-        val dy = g.getClipBounds.height.toFloat / ycont
+        val dx = g.getClipBounds.width.toFloat / Screen.screenWidth
+        val dy = g.getClipBounds.height.toFloat / Screen.screenHeight
         
         def paintCarnivores() =
             if (carnivoreData != null)
